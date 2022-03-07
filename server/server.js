@@ -7,11 +7,14 @@ const app = express();
 // if we don't run this we get a CORS error
 app.use(cors());
 
+const PORT = process.env.PORT || 4000;
+const URL = process.env.URL || "http://localhost:3000";
+
 // for now, take this as boilerplate
 const theServer = createServer();
 const io = new Server(theServer, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: URL
   }
 });
 
@@ -29,6 +32,6 @@ io.on('connection', socket => {
 })
 
 // need to ask how this redirects react server to port 4000
-theServer.listen(4000, function () {
+theServer.listen(PORT, function () {
   console.log('listening on port 4000')
 })
