@@ -22,6 +22,12 @@ io.on('connection', socket => {
   // when a user connects
   console.log("You are now connected. This socket ID is unique everytime: " + socket.id);
 
+  socket.on("join room", (username, roomId) => {
+    // socket.join(roomId);
+    console.log(`This is the data: ${username} & ${roomId}`);
+    // console.log(`Username: ${username} joined room ${roomId}`)
+  })
+
   // to confirm that the this is connected to the client, we'll send this message
   socket.emit("emitting to client", "Hello from the server!")
 
